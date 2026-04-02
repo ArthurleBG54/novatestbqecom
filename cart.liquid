@@ -1,0 +1,94 @@
+{% comment %} Template Panier - Thème NOVAIA {% endcomment %}
+
+<div class="page-width section-{{ section.id }}-padding">
+  <h1 class="title title--primary">Votre panier</h1>
+
+  {% if cart.item_count > 0 %}
+    <div class="cart-container">
+      <div class="cart-items">
+        <form action="{{ routes.cart_url }}" method="post" id="cart">
+          <div class="cart-items__header">
+            <span class="cart-items__product">Produit</span>
+            <span class="cart-items__quantity">Quantité</span>
+            <span class="cart-items__total">Total</span>
+          </div>
+
+          {% for item in cart.items %}
+            <div class="cart-item" data-cart-item-key="{{ item.key }}">
+              <div class="cart-item__media">
+                {% if item.image %}
+                  <img src="{{ item.image | image_url: width: 150 }}" alt="{{ item.image.alt | escape }}" loading="lazy">
+                {% endif %}
+              </div>
+              
+              <div class="cart-item__details">
+                <a href="{{ item.url }}" class="cart-item__name">{{ item.product.title }}</a>
+                {% if item.variant.title != 'Default Title' %}
+                  <p class="cart-item__variant">{{ item.variant.title }}</p>
+                {% endif %}
+                <p class="cart-item__price">{{ item.original_price | money }}</p>
+              </div>
+
+              <div class="cart-item__quantity">
+                <quantity-input class="quantity">
+                  <button class="quantity__button" name="minus" type="button">-</button>
+                  <input class="quantity__input" type="number" name="updates[]" value="{{ item.quantity }}" min="0">
+                  <button class="quantity__button" name="plus" type="button">+</button>
+                </quantity-input>
+                
+                <a href="{{ item.url_to_remove }}" class="cart-item__remove">Supprimer</a>
+              </div>
+
+              <div class="cart-item__totals">
+                <span class="cart-item__price">{{ item.final_line_price | money }}</span>
+              </div>
+            </div>
+          {% endfor %}
+
+          <div class="cart-footer">
+            <div class="cart-note">
+              <label for="Cart-note">Note de commande</label>
+              <textarea name="note" id="Cart-note" placeholder="Instructions spéciales..."></textarea>
+            </div>
+            
+            <button type="submit" class="button button--secondary" name="update">Mettre à jour le panier</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="cart-summary">
+        <h2>Récapitulatif</h2>
+        
+        <div class="cart-subtotal">
+          <span>Sous-total</span>
+          <span>{{ cart.total_price | money }}</span>
+        </div>
+
+        <div class="cart-shipping">
+          <p>Les frais de livraison seront calculés à l'étape suivante.</p>
+        </div>
+
+        <div class="cart-total">
+          <span>Total</span>
+          <span class="cart-total__price">{{ cart.total_price | money }}</span>
+        </div>
+
+        <button type="submit" name="checkout" class="cart__checkout-button button button--primary button--full-width" form="cart">
+          Finaliser la commande
+        </button>
+
+        <div class="cart-guarantees">
+          <div class="guarantee">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            <span>Paiement 100% sécurisé</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <div class="cart-empty">
+      <h2 class="cart-empty__text">Votre panier est vide</h2>
+      <a href="{{ routes.all_products_collection_url }}" class="button">Continuer les achats</a>
+    </div>
+  {% endif %}
+</div>

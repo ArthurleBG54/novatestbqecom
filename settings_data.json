@@ -1,0 +1,32 @@
+{
+  "current": {
+    "colors_primary": "#8B5CF6",
+    "colors_secondary": "#EC4899",
+    "type_header_font": "assistant_n4",
+    "type_body_font": "assistant_n4",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "color_scheme": "background-1",
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "color_scheme": "background-2"
+        },
+        "blocks": {
+          "brand": {
+            "type": "text",
+            "settings": {
+              "heading": "BestDeals",
+              "subtext": "Votre boutique en ligne de confiance"
+            }
+          }
+        }
+      }
+    }
+  }
+}

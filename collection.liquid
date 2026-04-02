@@ -1,0 +1,55 @@
+{% comment %} Template Collection - Thème NOVAIA {% endcomment %}
+
+<div class="page-width section-{{ section.id }}-padding">
+  <div class="collection-hero">
+    <h1 class="collection-hero__title">{{ collection.title }}</h1>
+    {% if collection.description != blank %}
+      <div class="collection-hero__description rte">
+        {{ collection.description }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="collection-toolbar">
+    <div class="collection-toolbar__item">
+      <span class="products-count">{{ collection.products_count }} produits</span>
+    </div>
+    
+    <div class="collection-toolbar__item">
+      <select name="sort_by" class="collection-sort" id="SortBy">
+        <option value="manual">En vedette</option>
+        <option value="price-ascending">Prix : croissant</option>
+        <option value="price-descending">Prix : décroissant</option>
+        <option value="title-ascending">Nom : A-Z</option>
+        <option value="title-descending">Nom : Z-A</option>
+        <option value="created-ascending">Date : ancien</option>
+        <option value="created-descending">Date : récent</option>
+        <option value="best-selling">Meilleures ventes</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="collection-grid grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col">
+    {% for product in collection.products %}
+      <div class="collection-grid__item">
+        {% render 'card-product',
+          card_product: product,
+          media_aspect_ratio: section.settings.image_ratio,
+          show_secondary_image: section.settings.show_secondary_image,
+          show_vendor: section.settings.show_vendor,
+          show_rating: section.settings.show_rating,
+          show_quick_add: section.settings.enable_quick_add,
+          section_id: section.id
+        %}
+      </div>
+    {% else %}
+      <div class="collection-grid__empty">
+        <p>Aucun produit dans cette collection.</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if paginate.pages > 1 %}
+    {% render 'pagination', paginate: paginate %}
+  {% endif %}
+</div>

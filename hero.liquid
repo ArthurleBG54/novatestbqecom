@@ -1,0 +1,293 @@
+{% comment %} Hero - Thème NOVAIA {% endcomment %}
+
+<div class="hero hero--{{ section.settings.hero_height }}">
+  <div class="hero__media">
+    <img src="https://ae01.alicdn.com/kf/Sa22897381c0e495aa7b884f079f34cef0.jpg" alt="Xiaomi-Tablette Pad 7, 11 " class="hero__bg-image">
+  </div>
+  
+  <div class="hero__overlay"></div>
+  
+  <div class="hero__content color-{{ section.settings.color_scheme }}">
+    <div class="page-width">
+      <div class="hero__box">
+        <span class="hero__tag">✨ NOUVEAUTÉ 2024</span>
+        <h2 class="hero__heading h0">BestDeals</h2>
+        <div class="hero__text subtitle">
+          Des produits tendance qui simplifient votre quotidien.
+        </div>
+        <div class="hero__features">
+          <span class="hero__feature">🚀 Livraison gratuite</span>
+          <span class="hero__feature">⭐ 4.8/5 avis clients</span>
+          <span class="hero__feature">🔒 Paiement sécurisé</span>
+        </div>
+        <div class="hero__buttons">
+          <a href="#products" class="button button--primary button--pulse">Découvrir les produits</a>
+          <a href="#about" class="button button--secondary">En savoir plus</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--color-background);
+  }
+  
+  .hero__media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+  }
+  
+  .hero__bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+  }
+  
+  .hero__gradient-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
+    overflow: hidden;
+  }
+  
+  .gradient-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.4;
+  }
+  
+  .orb-1 {
+    width: 600px;
+    height: 600px;
+    background: var(--color-purple);
+    top: -200px;
+    right: -200px;
+    animation: float 8s ease-in-out infinite;
+  }
+  
+  .orb-2 {
+    width: 400px;
+    height: 400px;
+    background: var(--color-pink);
+    bottom: -100px;
+    left: -100px;
+    animation: float 10s ease-in-out infinite reverse;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, -30px) scale(1.1); }
+  }
+  
+  .hero__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(15, 15, 26, 0.3) 0%, rgba(15, 15, 26, 0.9) 100%);
+    z-index: 1;
+  }
+  
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    padding: 2rem;
+  }
+  
+  .hero__tag {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--gradient-primary);
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(139, 92, 246, 0); }
+  }
+  
+  .hero__heading {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #fff 0%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .hero__text {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  
+  .hero__features {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .hero__feature {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+  
+  .hero__buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .button--pulse {
+    animation: pulse 2s infinite;
+  }
+  
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 600px;
+    }
+    
+    .hero__heading {
+      font-size: 2.5rem;
+    }
+    
+    .hero__features {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+</style>
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .hero__content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  .hero__heading {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .hero__text {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    opacity: 0.9;
+  }
+  
+  .hero__buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  @media (max-width: 768px) {
+    .hero {
+      height: 400px;
+    }
+    .hero__heading {
+      font-size: 2.5rem;
+    }
+    .hero__buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image de fond"
+    },
+    {
+      "type": "select",
+      "id": "hero_height",
+      "options": [
+        {
+          "value": "small",
+          "label": "Petit"
+        },
+        {
+          "value": "medium",
+          "label": "Moyen"
+        },
+        {
+          "value": "large",
+          "label": "Grand"
+        }
+      ],
+      "default": "medium",
+      "label": "Hauteur"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "background-1",
+          "label": "Fond clair"
+        },
+        {
+          "value": "background-2",
+          "label": "Fond foncé"
+        }
+      ],
+      "default": "background-2",
+      "label": "Color scheme"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

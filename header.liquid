@@ -1,0 +1,85 @@
+{% comment %} Header - Thème NOVAIA {% endcomment %}
+
+<header class="header-wrapper color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="header">
+      {% comment %} Logo {% endcomment %}
+      <div class="header__heading">
+        <a href="{{ routes.root_url }}" class="header__heading-link">
+          <span class="h2">BestDeals</span>
+        </a>
+      </div>
+
+      {% comment %} Navigation {% endcomment %}
+      <nav class="header__inline-menu">
+        <ul class="list-menu list-menu--inline">
+          {% for link in section.settings.menu.links %}
+            <li>
+              <a href="{{ link.url }}" class="header__menu-item{% if link.active %} header__active-menu-item{% endif %}" {% if link.current %}aria-current="page"{% endif %}>
+                <span>{{ link.title | escape }}</span>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </nav>
+
+      {% comment %} Icons {% endcomment %}
+      <div class="header__icons">
+        <details-modal class="header__search">
+          <details>
+            <summary class="header__icon header__icon--search">
+              <span>Recherche</span>
+            </summary>
+            <div class="search-modal modal__content">
+              <div class="search-modal__content">
+                <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
+                  <input type="hidden" name="type" value="product">
+                  <input class="search__input" type="search" name="q" value="" placeholder="Rechercher..." autocomplete="off">
+                  <button type="submit" class="search__button">Rechercher</button>
+                </form>
+              </div>
+            </div>
+          </details>
+        </details-modal>
+
+        <a href="{{ routes.account_url }}" class="header__icon header__icon--account">
+          <span>Compte</span>
+        </a>
+
+        <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart">
+          <span>Panier ({{ cart.item_count }})</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "background-1",
+          "label": "Background 1"
+        },
+        {
+          "value": "background-2",
+          "label": "Background 2"
+        }
+      ],
+      "default": "background-1",
+      "label": "Color scheme"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Menu"
+    }
+  ]
+}
+{% endschema %}
